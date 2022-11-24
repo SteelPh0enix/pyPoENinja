@@ -1,4 +1,5 @@
 import pypoeninja.request_utils as request
+import pytest
 
 TEST_API_URL = "https://jsonplaceholder.typicode.com/todos/1"
 EXPECTED_RESPONSE = {
@@ -21,3 +22,8 @@ def test_cache_enabling():
 def test_getting_json():
     json = request.get_json(TEST_API_URL)
     assert json == EXPECTED_RESPONSE
+
+
+def test_get_json_fails_on_invalid_url():
+    with pytest.raises(request.RequestError):
+        request.get_json("http://example.org/some random invalid endpoint")
