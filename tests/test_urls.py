@@ -1,6 +1,9 @@
 import pypoeninja.urls as urls
 import requests
+import requests_cache
 import pytest
+
+requests_cache.install_cache()
 
 
 def check_url_request_status_code(url: str) -> int:

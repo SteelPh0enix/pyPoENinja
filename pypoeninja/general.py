@@ -1,6 +1,6 @@
 """This module contains functions for fetching general information about current/past leagues metadata."""
 
-import requests
+from pypoeninja.request_utils import get_json
 from pypoeninja.urls import api_index_url
 from typing import Dict, List
 
@@ -8,7 +8,9 @@ LEAGUES_FIELD = "economyLeagues"
 """Field for economy leagues metadata"""
 
 LeagueInfo = Dict[str, str | bool]
+"""Type representing league metadata"""
 SnapshotInfo = Dict[str, str | List[str]]
+"""Type representing snapshot metadata"""
 
 
 def fetch_general_metadata() -> Dict[str, List[LeagueInfo | SnapshotInfo]]:
@@ -17,8 +19,7 @@ def fetch_general_metadata() -> Dict[str, List[LeagueInfo | SnapshotInfo]]:
     Returns:
         Dict[str, List[LeagueInfo | SnapshotInfo]]: JSON with leagues and snapshots info.
     """
-    request = requests.get(api_index_url())
-    return request.json()
+    return get_json(api_index_url())  # type: ignore
 
 
 def fetch_current_leagues() -> List[LeagueInfo]:
