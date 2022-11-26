@@ -3,7 +3,7 @@ from typing import Any
 import requests
 import requests_cache
 
-DEFAULT_CACHE_EXPIRATION_TIME = 360
+DEFAULT_CACHE_EXPIRATION_TIME = 600
 """Default cache expiration time"""
 APP_USER_AGENT = "pyPoENinja Client"
 """Application user agent"""
