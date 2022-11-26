@@ -5,7 +5,14 @@ from typing import cast
 
 from dacite.core import from_dict
 
-from pypoeninja.leagues_constants import TEMPORARY_LEAGUE_NAME
+from pypoeninja.leagues_constants import (
+    CHALLENGE_LEAGUE_HC_NAME,
+    CHALLENGE_LEAGUE_HC_SSF_NAME,
+    CHALLENGE_LEAGUE_NAME,
+    CHALLENGE_LEAGUE_SSF_NAME,
+    HARDCORE_LEAGUE_NAME,
+    STANDARD_LEAGUE_NAME,
+)
 from pypoeninja.request_utils import get_json
 from pypoeninja.urls import api_index_url
 
@@ -78,4 +85,49 @@ def fetch_challenge_league_info() -> LeagueInfo:
     Returns:
         LeagueInfo: Current challenge league metadata.
     """
-    return cast(LeagueInfo, fetch_league_info(TEMPORARY_LEAGUE_NAME))
+    return cast(LeagueInfo, fetch_league_info(CHALLENGE_LEAGUE_NAME))
+
+
+def fetch_challenge_hc_league_info() -> LeagueInfo:
+    """Fetches the metadata of current challenge hardcore league.
+
+    Returns:
+        LeagueInfo: Current challenge hardcore league metadata.
+    """
+    return cast(LeagueInfo, fetch_league_info(CHALLENGE_LEAGUE_HC_NAME))
+
+
+def fetch_challenge_ssf_league_info() -> LeagueInfo:
+    """Fetches the metadata of current challenge solo self-found league.
+
+    Returns:
+        LeagueInfo: Current challenge solo self-found league metadata.
+    """
+    return cast(LeagueInfo, fetch_league_info(CHALLENGE_LEAGUE_SSF_NAME))
+
+
+def fetch_challenge_hc_ssf_league_info() -> LeagueInfo:
+    """Fetches the metadata of current challenge hardcore solo self-found league.
+
+    Returns:
+        LeagueInfo: Current challenge hardcore solo self-found league metadata.
+    """
+    return cast(LeagueInfo, fetch_league_info(CHALLENGE_LEAGUE_HC_SSF_NAME))
+
+
+def fetch_standard_league_info() -> LeagueInfo:
+    """Fetches the metadata of standard league.
+
+    Returns:
+        LeagueInfo: Standard league metadata
+    """
+    return cast(LeagueInfo, fetch_league_info(STANDARD_LEAGUE_NAME))
+
+
+def fetch_hardcore_league_info() -> LeagueInfo:
+    """Fetches the metadata of standard league.
+
+    Returns:
+        LeagueInfo: Standard league metadata
+    """
+    return cast(LeagueInfo, fetch_league_info(HARDCORE_LEAGUE_NAME))

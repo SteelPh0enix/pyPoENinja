@@ -3,12 +3,12 @@ import requests
 import requests_cache
 
 import pypoeninja.urls as urls
-from pypoeninja.leagues_constants import TEMPORARY_LEAGUE_NAME
+from pypoeninja.leagues_constants import CHALLENGE_LEAGUE_NAME
 
 STATUS_CODE_OK = 200
 INVALID_CATEGORY_NAME = "invalid category"
 INVALID_LANGUAGE = "invalid language"
-DEFAULT_LEAGUE_NAME = TEMPORARY_LEAGUE_NAME
+DEFAULT_LEAGUE_NAME = CHALLENGE_LEAGUE_NAME
 DEFAULT_CATEGORY_NAME = list(urls.CATEGORIES.keys())[0]
 
 requests_cache.install_cache()  # type: ignore
