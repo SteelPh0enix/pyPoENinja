@@ -53,7 +53,7 @@ def fetch_general_metadata() -> LeaguesMetadata:
     return from_dict(data_class=LeaguesMetadata, data=get_json(api_index_url()))
 
 
-def fetch_league_metadata(league_name: str) -> LeagueInfo | None:
+def fetch_league_info(league_name: str) -> LeagueInfo | None:
     """Fetches the metadata of specific league. Names can be found in :ref:leagues_constants
 
     Args:
@@ -72,10 +72,10 @@ def fetch_league_metadata(league_name: str) -> LeagueInfo | None:
     return None
 
 
-def fetch_current_temporary_league_metadata() -> LeagueInfo:
-    """Fetches the metadata of current temporary league.
+def fetch_challenge_league_info() -> LeagueInfo:
+    """Fetches the metadata of current challenge league.
 
     Returns:
-        LeagueInfo: Current temporary league metadata.
+        LeagueInfo: Current challenge league metadata.
     """
-    return cast(LeagueInfo, fetch_league_metadata(TEMPORARY_LEAGUE_NAME))
+    return cast(LeagueInfo, fetch_league_info(TEMPORARY_LEAGUE_NAME))

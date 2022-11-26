@@ -55,15 +55,15 @@ def test_fetch_general_metadata_returns_expected_build_leagues():
 
 
 def test_fetch_league_metadata_returns_none_on_invalid_league():
-    assert leagues.fetch_league_metadata(INVALID_LEAGUE_NAME) is None
+    assert leagues.fetch_league_info(INVALID_LEAGUE_NAME) is None
 
 
 def test_fetch_league_metadata_returns_expected_leagues():
     for league_name in EXPECTED_LEAGUES:
-        league = leagues.fetch_league_metadata(league_name)
+        league = leagues.fetch_league_info(league_name)
         assert league is not None
 
 
-def test_fetch_current_temporary_league_metadata_returns_metadata():
+def test_fetch_challenge_league_info_does_not_return_none():
     """this verifies that cast() is not silencing potential error, although other tests should also catch it"""
-    assert leagues.fetch_current_temporary_league_metadata() is not None
+    assert leagues.fetch_challenge_league_info() is not None
