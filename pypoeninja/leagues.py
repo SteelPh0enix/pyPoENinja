@@ -1,9 +1,11 @@
 """This module contains functions for fetching general information about current/past leagues metadata."""
 
 from dataclasses import dataclass
+from typing import cast
 
 from dacite.core import from_dict
 
+from pypoeninja.leagues_constants import TEMPORARY_LEAGUE_NAME
 from pypoeninja.request_utils import get_json
 from pypoeninja.urls import api_index_url
 
@@ -51,10 +53,29 @@ def fetch_general_metadata() -> LeaguesMetadata:
     return from_dict(data_class=LeaguesMetadata, data=get_json(api_index_url()))
 
 
-def fetch_current_temporary_league() -> LeagueInfo:
+def fetch_league_metadata(league_name: str) -> LeagueInfo | None:
+    """Fetches the metadata of specific league. Names can be found in :ref:leagues_constants
+
+    Args:
+        league_name (str): Name of the league
+
+    Returns:
+        LeagueInfo | None: League metadata, or None if league is not found
+    """
+    leagues = (
+        fetch_general_metadata().economyLeagues + fetch_general_metadata().buildLeagues
+    )
+    for league in leagues:
+        if league.name == league_name:
+            return league
+
+    return None
+
+
+def fetch_current_temporary_league_metadata() -> LeagueInfo:
     """Fetches the metadata of current temporary league.
 
     Returns:
         LeagueInfo: Current temporary league metadata.
     """
-    return fetch_general_metadata().economyLeagues[0]
+    return cast(LeagueInfo, fetch_league_metadata(TEMPORARY_LEAGUE_NAME))

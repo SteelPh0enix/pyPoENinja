@@ -34,9 +34,19 @@ EXPECTED_BUILD_LEAGUES = [
     TEMPORARY_LEAGUE_HC_SSF_NAME,
 ]
 
+EXPECTED_LEAGUES = [
+    STANDARD_LEAGUE_NAME,
+    HARDCORE_LEAGUE_NAME,
+    TEMPORARY_LEAGUE_NAME,
+    TEMPORARY_LEAGUE_HC_NAME,
+    TEMPORARY_LEAGUE_SSF_NAME,
+    TEMPORARY_LEAGUE_HC_SSF_NAME,
+]
 
-def test_expected_economy_leagues_appearance():
-    """Check if economy leagues metadata contains expected leagues"""
+INVALID_LEAGUE_NAME = "invalid league"
+
+
+def test_fetch_general_metadata_returns_expected_economy_leagues():
     meta = leagues.fetch_general_metadata()
     found_leagues = 0
     for league in meta.economyLeagues:
@@ -46,8 +56,7 @@ def test_expected_economy_leagues_appearance():
     assert found_leagues == len(EXPECTED_ECONOMY_LEAGUES)
 
 
-def test_expected_economy_leagues_state():
-    """Check if economy leagues expected in metadata have expected field values"""
+def test_fetch_general_metadata_economy_leagues_have_expected_field_values():
     meta = leagues.fetch_general_metadata()
     for league in meta.economyLeagues:
         if league.name == TEMPORARY_LEAGUE_NAME:
@@ -72,8 +81,7 @@ def test_expected_economy_leagues_state():
             assert league.indexed is False
 
 
-def test_expected_build_leagues_appearance():
-    """Check if build leagues metadata contains expected leagues"""
+def test_fetch_general_metadata_returns_expected_build_leagues():
     meta = leagues.fetch_general_metadata()
     found_leagues = 0
     for league in meta.buildLeagues:
@@ -83,8 +91,7 @@ def test_expected_build_leagues_appearance():
     assert found_leagues == len(EXPECTED_BUILD_LEAGUES)
 
 
-def test_expected_build_leagues_state():
-    """Check if build leagues expected in metadata have expected field values"""
+def test_fetch_general_metadata_build_leagues_have_expected_field_values():
     meta = leagues.fetch_general_metadata()
     for league in meta.economyLeagues:
         if league.name == TEMPORARY_LEAGUE_NAME:
@@ -107,3 +114,13 @@ def test_expected_build_leagues_state():
             assert league.displayName == TEMPORARY_LEAGUE_HC_SSF_DISPLAY_NAME
             assert league.hardcore is True
             assert league.indexed is False
+
+
+def test_fetch_league_metadata_returns_none_on_invalid_league():
+    assert leagues.fetch_league_metadata(INVALID_LEAGUE_NAME) is None
+
+
+def test_fetch_league_metadata_returns_expected_leagues():
+    for league_name in EXPECTED_LEAGUES:
+        league = leagues.fetch_league_metadata(league_name)
+        assert league is not None

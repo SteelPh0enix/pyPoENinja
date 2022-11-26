@@ -1,3 +1,4 @@
+"""This module contains constants for challenge, standard and hardcore leagues metadata."""
 TEMPORARY_LEAGUE_NAME = "Kalandra"
 TEMPORARY_LEAGUE_URL = "challenge"
 TEMPORARY_LEAGUE_DISPLAY_NAME = TEMPORARY_LEAGUE_NAME
