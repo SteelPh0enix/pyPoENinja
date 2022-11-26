@@ -3,10 +3,7 @@ import requests
 import requests_cache
 
 import pypoeninja.urls as urls
-from tests.poeninja_constants import (
-    DEFAULT_CATEGORY_NAME,
-    DEFAULT_LEAGUE_NAME,
-)
+from tests.poeninja_constants import DEFAULT_CATEGORY_NAME, DEFAULT_LEAGUE_NAME
 
 STATUS_CODE_OK = 200
 INVALID_CATEGORY_NAME = "invalid category"

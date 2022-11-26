@@ -48,7 +48,6 @@ def fetch_general_metadata() -> LeaguesMetadata:
     Returns:
         LeaguesMetadata: Dataclass instance with leagues and snapshots info.
     """
-    # return LeaguesMetadata.from_json(get_json(api_index_url()))  # type: ignore
     return from_dict(data_class=LeaguesMetadata, data=get_json(api_index_url()))
 
 
