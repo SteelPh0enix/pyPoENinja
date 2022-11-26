@@ -1,6 +1,7 @@
+from typing import Any
+
 import requests
 import requests_cache
-from typing import Any
 
 DEFAULT_CACHE_EXPIRATION_TIME = 360
 """Default cache expiration time"""
@@ -8,11 +9,6 @@ APP_USER_AGENT = "pyPoENinja Client"
 """Application user agent"""
 HTTP_OK_CODE = 200
 """HTTP OK code"""
-
-JsonValue = int | float | str | bool | None | dict[str, Any] | list[Any]
-"""Type representing a JSON value"""
-JsonObject = dict[str, JsonValue] | list[JsonValue]
-"""Type representing a JSON object"""
 
 
 class RequestError(Exception):
@@ -47,7 +43,7 @@ def is_cache_enabled() -> bool:
     return requests_cache.is_installed()
 
 
-def get_json(url: str) -> JsonObject:
+def get_json(url: str) -> dict[str, Any]:
     """Performs HTTP GET for a JSON at specified URL. Throws RequestError with HTTP status code if it's not successful.
 
     Args:

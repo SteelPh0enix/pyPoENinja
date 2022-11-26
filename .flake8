@@ -1,7 +1,7 @@
 [flake8]
 exclude = .git,__pycache__,docs
 max-complexity = 10
-select = E,F,W,C
+select = E,F,W,C9,N8
 show-source = True
 statistics = True
 max-line-length = 120

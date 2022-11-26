@@ -1,5 +1,6 @@
-import pypoeninja.request_utils as request
 import pytest
+
+import pypoeninja.request_utils as request
 
 TEST_API_URL = "https://jsonplaceholder.typicode.com/todos/1"
 EXPECTED_RESPONSE = {

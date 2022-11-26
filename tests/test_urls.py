@@ -1,7 +1,8 @@
-import pypoeninja.urls as urls
+import pytest
 import requests
 import requests_cache
-import pytest
+
+import pypoeninja.urls as urls
 
 requests_cache.install_cache()
 
