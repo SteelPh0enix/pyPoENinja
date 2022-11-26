@@ -1,11 +1,18 @@
 import pypoeninja.leagues as leagues
-
-CURRENT_TEMPORARY_LEAGUE = "Kalandra"
+from tests.poeninja_constants import (
+    CURRENT_TEMPORARY_LEAGUE_NAME,
+    HARDCORE_LEAGUE_NAME,
+    STANDARD_LEAGUE_NAME,
+)
 
 
 def test_fetching_economy_leagues():
     meta = leagues.fetch_general_metadata()
-    expected_economy_leagues = ["Standard", "Hardcore", CURRENT_TEMPORARY_LEAGUE]
+    expected_economy_leagues = [
+        STANDARD_LEAGUE_NAME,
+        HARDCORE_LEAGUE_NAME,
+        CURRENT_TEMPORARY_LEAGUE_NAME,
+    ]
     found_leagues = 0
 
     for league in meta.economyLeagues:
