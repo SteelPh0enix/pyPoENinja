@@ -20,6 +20,14 @@ pypoeninja.general module
    :undoc-members:
    :show-inheritance:
 
+pypoeninja.request\_utils module
+--------------------------------
+
+.. automodule:: pypoeninja.request_utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 pypoeninja.urls module
 ----------------------
 
