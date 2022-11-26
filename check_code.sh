@@ -1,8 +1,5 @@
 #!/bin/sh
-echo "Sorting imports..."
-poetry run isort pypoeninja/* tests/*
-echo "Formatting with black..."
-poetry run black pypoeninja/* tests/*
+./format_code.sh
 echo "Linting with flake8..."
 poetry run flake8 .
 echo "Running tests..."
