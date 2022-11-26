@@ -12,10 +12,18 @@ pypoeninja.currency module
    :undoc-members:
    :show-inheritance:
 
-pypoeninja.general module
+pypoeninja.leagues module
 -------------------------
 
-.. automodule:: pypoeninja.general
+.. automodule:: pypoeninja.leagues
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pypoeninja.leagues\_constants module
+------------------------------------
+
+.. automodule:: pypoeninja.leagues_constants
    :members:
    :undoc-members:
    :show-inheritance:
