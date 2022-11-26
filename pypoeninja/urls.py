@@ -94,15 +94,13 @@ def api_category_url(
         league_name (str): League name.
         category (str): Category name.
         language (str, optional): Language to fetch data in. Defaults to DEFAULT_LANGUAGE.
-        Valid languages are stored in API_LANGUAGES map.
+                                  Valid languages are stored in API_LANGUAGES map.
     """
     if category not in CATEGORIES:
         raise UrlException(f"Category '{category}' is not available!")
 
     if language not in LANGUAGES:
         raise UrlException(f"Language '{language} is not available!")
-
-    # TODO: add league name validation (fetch league names from API on import?)
 
     category_metadata = CATEGORIES[category]
     language_id = LANGUAGES[language]

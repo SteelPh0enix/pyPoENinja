@@ -2,33 +2,35 @@
 
 from pypoeninja.request_utils import get_json
 from pypoeninja.urls import api_index_url
-from typing import Dict, List
+from typing import cast
 
 LEAGUES_FIELD = "economyLeagues"
 """Field for economy leagues metadata"""
 
-LeagueInfo = Dict[str, str | bool]
+LeagueInfo = dict[str, str | bool]
 """Type representing league metadata"""
-SnapshotInfo = Dict[str, str | List[str]]
+SnapshotInfo = dict[str, str | list[str]]
 """Type representing snapshot metadata"""
+LeaguesMetadata = dict[str, list[LeagueInfo | SnapshotInfo]]
+"""Type representing leagues metadata"""
 
 
-def fetch_general_metadata() -> Dict[str, List[LeagueInfo | SnapshotInfo]]:
+def fetch_general_metadata() -> LeaguesMetadata:
     """Fetches the information about available leagues and snapshots.
 
     Returns:
-        Dict[str, List[LeagueInfo | SnapshotInfo]]: JSON with leagues and snapshots info.
+        LeaguesMetadata: JSON with leagues and snapshots info.
     """
-    return get_json(api_index_url())  # type: ignore
+    return cast(LeaguesMetadata, get_json(api_index_url()))
 
 
-def fetch_current_leagues() -> List[LeagueInfo]:
+def fetch_current_leagues() -> list[LeagueInfo]:
     """Fetches the list of current leagues metadata.
 
     Returns:
         List[LeagueInfo]: List of current leagues metadata.
     """
-    return fetch_general_metadata()[LEAGUES_FIELD]  # type: ignore
+    return cast(list[LeagueInfo], fetch_general_metadata()[LEAGUES_FIELD])
 
 
 def fetch_current_temporary_league() -> LeagueInfo:
