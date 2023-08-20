@@ -132,3 +132,6 @@ dmypy.json
 /coverage-report
 /site-content
 *.sqlite
+
+./docs/modules.rst
+./docs/pypoeninja.rst
