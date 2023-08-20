@@ -10,7 +10,7 @@ Welcome to pyPoENinja's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-   pypoeninja
+   modules
 
 Coverage report is available `here`_!
 
