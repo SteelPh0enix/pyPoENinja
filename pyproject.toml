@@ -8,25 +8,25 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-requests = "^2.28.1"
-dacite = "^1.6.0"
+requests = "^2.31.0"
+dacite = "^1.8.1"
 
 [tool.poetry.group.dev.dependencies]
-black = "^22.10.0"
-pytest = "^7.2.0"
-flake8 = "^6.0.0"
-mypy = "^0.991"
-types-requests = "^2.28.11.5"
-requests-cache = "^0.9.7"
-isort = "^5.10.1"
+black = "^23.7.0"
+pytest = "^7.4.0"
+flake8 = "^6.1.0"
+mypy = "^1.5.1"
+types-requests = "^2.31.0.2"
+requests-cache = "^1.1.0"
+isort = "^5.12.0"
 
 [tool.poetry.group.docs]
 optional = true
 
 [tool.poetry.group.docs.dependencies]
-sphinx = "^5.3.0"
-coverage = "^6.5.0"
-sphinx-rtd-theme = "^1.1.1"
+sphinx = "^7.2.2"
+coverage = "^7.3.0"
+sphinx-rtd-theme = "^1.2.2"
 
 [tool.isort]
 profile = "black"
