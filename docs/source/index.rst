@@ -1,14 +1,16 @@
-.. PyPoENinja documentation master file, created by
-   sphinx-quickstart on Thu Nov 24 14:42:33 2022.
+.. pyPoENinja documentation master file, created by
+   sphinx-quickstart on Sun Aug 20 15:41:55 2023.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to PyPoENinja's documentation!
+Welcome to pyPoENinja's documentation!
 ======================================
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
+
+   pypoeninja
 
 Coverage report is available `here`_!
 

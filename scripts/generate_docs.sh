@@ -1,10 +1,11 @@
 #!/bin/sh
 echo "Cleaning up old docs..."
-rm docs/modules.rst docs/pypoeninja.rst
+rm docs/source/modules.rst
+rm docs/source/pypoeninja.rst
 echo "Generate documentation files..."
-poetry run sphinx-apidoc -o docs pypoeninja
+poetry run sphinx-apidoc -o docs/source pypoeninja
 echo "Building the docs..."
-poetry run sphinx-build -b html docs site-content
+poetry run sphinx-build -b html docs/source site-content
 echo "Measuring coverage..."
 poetry run coverage run -m pytest
 echo "Generating coverage report..."
