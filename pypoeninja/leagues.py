@@ -22,10 +22,15 @@ class LeagueInfo:
     """Dataclass representing PoE.Ninja metadata of a single league"""
 
     name: str
+    """League name"""
     url: str
+    """Base URL of league's data"""
     displayName: str
+    """Display name of the league"""
     hardcore: bool
+    """Is league hardcore?"""
     indexed: bool
+    """Is league indexed?"""
 
 
 @dataclass
@@ -33,11 +38,17 @@ class SnapshotInfo:
     """Dataclass representing PoE.Ninja snapshot information"""
 
     url: str
+    """Snapshot URL"""
     type: str
+    """Snapshot type"""
     name: str
+    """Snapshot name"""
     timeMachineLabels: list[str]
+    """Time machine labels"""
     version: str
+    """Snapshot version"""
     snapshotName: str
+    """Snapshot name"""
 
 
 @dataclass
@@ -45,10 +56,15 @@ class LeaguesMetadata:
     """Dataclass representing leagues and snapshots metadata"""
 
     economyLeagues: list[LeagueInfo]
+    """List of current economy leagues' metadata"""
     oldEconomyLeagues: list[LeagueInfo]
+    """List of old economy leagues' metadata"""
     snapshotVersions: list[SnapshotInfo]
+    """Snapshots"""
     buildLeagues: list[LeagueInfo]
+    """List of leagues with available build statistics"""
     oldBuildLeagues: list[LeagueInfo]
+    """List of old leagues with available build statistics"""
 
 
 def fetch_general_metadata() -> LeaguesMetadata:

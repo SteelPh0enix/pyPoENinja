@@ -22,7 +22,7 @@ def enable_cache(expiration_time: int = DEFAULT_CACHE_EXPIRATION_TIME) -> None:
 
     Args:
         expiration_time (int, optional): Amount of time until the cache is invalidated, in seconds.
-        Defaults to DEFAULT_CACHE_EXPIRATION_TIME.
+                                         Defaults to :const:`DEFAULT_CACHE_EXPIRATION_TIME`
     """
     requests_cache.install_cache(  # type: ignore
         expire_after=expiration_time, allowable_methods=["GET"]
@@ -50,7 +50,7 @@ def get_json(url: str) -> dict[str, Any]:
         url (str): URL from which the JSON will be fetched
 
     Returns:
-        JsonObject: JSON response
+        dict[str, Any]: JSON response
     """
     headers = {"User-Agent": APP_USER_AGENT}
     request = requests.get(url, headers=headers)

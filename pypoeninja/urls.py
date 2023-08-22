@@ -95,8 +95,8 @@ def api_category_url(
     Args:
         league_name (str): League name.
         category (str): Category name.
-        language (str, optional): Language to fetch data in. Defaults to DEFAULT_LANGUAGE.
-                                  Valid languages are stored in API_LANGUAGES map.
+        language (str, optional): Language to fetch data in. Defaults to :const:`DEFAULT_LANGUAGE`.
+                                  Valid languages are stored in :const:`LANGUAGES` map.
     """
     if category not in CATEGORIES:
         raise UrlException(f"Category '{category}' is not available!")
