@@ -102,7 +102,7 @@ def api_category_url(
         raise UrlException(f"Category '{category}' is not available!")
 
     if language not in LANGUAGES:
-        raise UrlException(f"Language '{language} is not available!")
+        raise UrlException(f"Language '{language}' is not available!")
 
     category_metadata = CATEGORIES[category]
     language_id = LANGUAGES[language]
