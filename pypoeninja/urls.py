@@ -29,6 +29,8 @@ class CategoryMetadata:
 CATEGORIES = {
     "Currency": CategoryMetadata("Currency", "currency"),
     "Fragments": CategoryMetadata("Fragment", "currency"),
+    "Tattoos": CategoryMetadata("Tattoo", "item"),
+    "Omens": CategoryMetadata("Omen", "item"),
     "Divination Cards": CategoryMetadata("DivinationCard", "item"),
     "Artifacts": CategoryMetadata("Artifact", "item"),
     "Oils": CategoryMetadata("Oil", "item"),
