@@ -5,11 +5,22 @@ description = "Python library for accessing PoE.Ninja data"
 authors = ["SteelPh0enix <steelphoenix2137@gmail.com>"]
 license = "MIT"
 readme = "README.md"
+repository = "https://github.com/SteelPh0enix/pyPoENinja/"
+keywords = ["poeninja", "path", "of", "exile", "poe", "ninja", "api"]
+classifiers = [
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Games/Entertainment",
+    "Topic :: Games/Entertainment :: Role-Playing",
+    "Topic :: Utilities"
+]
 
 [tool.poetry.dependencies]
 python = "^3.10"
 requests = "^2.31.0"
 dacite = "^1.8.1"
+requests-cache = "^1.1.0"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.7.0"
@@ -17,7 +28,6 @@ pytest = "^7.4.0"
 flake8 = "^6.1.0"
 mypy = "^1.5.1"
 types-requests = "^2.31.0.2"
-requests-cache = "^1.1.0"
 isort = "^5.12.0"
 
 [tool.poetry.group.docs]
