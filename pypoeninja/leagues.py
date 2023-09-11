@@ -77,7 +77,7 @@ def fetch_general_metadata() -> LeaguesMetadata:
 
 
 def fetch_league_info(league_name: str) -> LeagueInfo | None:
-    """Fetches the metadata of specific league. Names can be found in :ref:leagues_constants
+    """Fetches the metadata of specific league. Names can be found in :mod:`leagues_constants <pypoeninja.leagues_constants>` module.
 
     Args:
         league_name (str): Name of the league
