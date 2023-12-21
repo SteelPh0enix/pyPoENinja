@@ -50,6 +50,7 @@ CATEGORIES = {
     "DeliriumOrbs": CategoryMetadata("DeliriumOrb", "item"),
     "Invitations": CategoryMetadata("Invitation", "item"),
     "Scarabs": CategoryMetadata("Scarab", "item"),
+    "Memories": CategoryMetadata("Memory", "item"),
     "Base Types": CategoryMetadata("BaseType", "item"),
     "Fossils": CategoryMetadata("Fossil", "item"),
     "Resonators": CategoryMetadata("Resonator", "item"),
