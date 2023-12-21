@@ -1,3 +1,5 @@
+from datetime import timedelta
+
 import pytest
 import requests
 import requests_cache
@@ -11,7 +13,9 @@ INVALID_LANGUAGE = "invalid language"
 DEFAULT_LEAGUE_NAME = CHALLENGE_LEAGUE_NAME
 DEFAULT_CATEGORY_NAME = list(urls.CATEGORIES.keys())[0]
 
-requests_cache.install_cache()  # type: ignore
+requests_cache.install_cache(
+    "tests_cache", backend="sqlite", use_temp=True, expire_after=timedelta(hours=1)
+)
 
 
 def check_url_request_status_code(url: str) -> int:
