@@ -1,4 +1,5 @@
-"""This module contains functions for fetching general information about current/past leagues metadata."""
+"""This module contains functions for fetching general information about current/past leagues
+metadata."""
 
 from dataclasses import dataclass
 from typing import cast
@@ -77,7 +78,8 @@ def fetch_general_metadata() -> LeaguesMetadata:
 
 
 def fetch_league_info(league_name: str) -> LeagueInfo | None:
-    """Fetches the metadata of specific league. Names can be found in :mod:`leagues_constants <pypoeninja.leagues_constants>` module.
+    """Fetches the metadata of specific league. Names can be found in :mod:`leagues_constants
+    <pypoeninja.leagues_constants>` module.
 
     Args:
         league_name (str): Name of the league
