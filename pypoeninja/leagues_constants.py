@@ -1,6 +1,6 @@
 """This module contains constants for challenge, standard and hardcore leagues metadata."""
 
-CHALLENGE_LEAGUE_NAME = "Ancestor"
+CHALLENGE_LEAGUE_NAME = "Affliction"
 """Current challenge league name"""
 CHALLENGE_LEAGUE_HC_NAME = f"Hardcore {CHALLENGE_LEAGUE_NAME}"
 """Current challenge hardcore league name"""
