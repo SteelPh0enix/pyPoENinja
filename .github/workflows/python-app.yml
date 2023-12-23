@@ -28,9 +28,21 @@ jobs:
         python -m pip install --upgrade pip
         curl -sSL https://install.python-poetry.org | python3 -
         poetry install
-    - name: Lint with flake8
+    - name: Lint PyPoeNinja code with pylint
       run: |
-        poetry run flake8 .
-    - name: Test with pytest
+        poetry run pylint ./pypoeninja/**/*.py
+    - name: Lint tests with pylint
+      run: |
+        poetry run pylint ./tests/**/*.py
+    - name: Lint project with mypy
+      run: |
+        poetry run mypy .
+    - name: Lint PyPoeNinja code with Ruff
+      run: |
+        poetry run ruff ./pypoeninja
+    - name: Lint tests with Ruff
+      run: |
+        poetry run ruff ./tests
+    - name: Run tests
       run: |
         poetry run pytest
