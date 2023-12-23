@@ -1,5 +1,11 @@
 #!/bin/sh
-echo "Linting with flake8..."
-poetry run flake8 .
+echo "Linting with pylint..."
+poetry run pylint ./pypoeninja/**/*.py
+poetry run pylint ./tests/**/*.py
+echo "Linting with mypy..."
+poetry run mypy .
+echo "Linting with ruff..."
+poetry run ruff ./pypoeninja
+poetry run ruff ./tests
 echo "Running tests..."
 poetry run pytest

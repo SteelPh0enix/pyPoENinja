@@ -1,4 +1,3 @@
-Write-Output "Sorting imports..."
-poetry run isort pypoeninja/* tests/*
-Write-Output "Formatting with black..."
-poetry run black pypoeninja/* tests/*
+Write-Output "Formatting and fixing issues..."
+poetry run ruff --fix ./pypoeninja
+poetry run ruff --fix ./tests

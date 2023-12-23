@@ -1,3 +1,4 @@
+"""Request utilities for unit tests"""
 import pytest
 
 import pypoeninja.request_utils as request
@@ -11,7 +12,7 @@ EXPECTED_RESPONSE = {
 }
 
 
-def test_cache_enabling():
+def test_cache_enabling() -> None:
     # Cache should be enabled by default
     assert request.is_cache_enabled()
     request.disable_cache()
@@ -20,11 +21,11 @@ def test_cache_enabling():
     assert request.is_cache_enabled()
 
 
-def test_getting_json():
+def test_getting_json() -> None:
     json = request.get_json(TEST_API_URL)
     assert json == EXPECTED_RESPONSE
 
 
-def test_get_json_fails_on_invalid_url():
+def test_get_json_fails_on_invalid_url() -> None:
     with pytest.raises(request.RequestError):
-        request.get_json("http://example.org/some random invalid endpoint")
+        request.get_json("https://poe.ninja/some random invalid endpoint")

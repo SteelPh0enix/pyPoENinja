@@ -1,5 +1,4 @@
 #!/bin/sh
-echo "Sorting imports..."
-poetry run isort pypoeninja/* tests/*
-echo "Formatting with black..."
-poetry run black pypoeninja/* tests/*
+echo "Formatting and fixing issues..."
+poetry run ruff --fix ./pypoeninja
+poetry run ruff --fix ./tests

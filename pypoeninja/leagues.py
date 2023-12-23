@@ -1,10 +1,10 @@
 """This module contains functions for fetching general information about current/past leagues
 metadata."""
 
-from dataclasses import dataclass
-from typing import cast
+from __future__ import annotations
 
-from dacite.core import from_dict
+from dataclasses import dataclass
+from typing import Any, cast
 
 from pypoeninja.leagues_constants import (
     CHALLENGE_LEAGUE_HC_NAME,
@@ -26,7 +26,7 @@ class LeagueInfo:
     """League name"""
     url: str
     """Base URL of league's data"""
-    displayName: str
+    display_name: str
     """Display name of the league"""
     hardcore: bool
     """Is league hardcore?"""
@@ -40,32 +40,62 @@ class SnapshotInfo:
 
     url: str
     """Snapshot URL"""
-    type: str
+    snapshot_type: str
     """Snapshot type"""
     name: str
     """Snapshot name"""
-    timeMachineLabels: list[str]
+    time_machine_labels: list[str]
     """Time machine labels"""
     version: str
     """Snapshot version"""
-    snapshotName: str
+    snapshot_name: str
     """Snapshot name"""
+    overview_type: int
+    """Overview type"""
+    search_mode: int
+    """Search mode"""
+    has_server: bool
+    """Has server?"""
 
 
 @dataclass
 class LeaguesMetadata:
     """Dataclass representing leagues and snapshots metadata"""
 
-    economyLeagues: list[LeagueInfo]
+    economy_leagues: list[LeagueInfo]
     """List of current economy leagues' metadata"""
-    oldEconomyLeagues: list[LeagueInfo]
+    old_economy_leagues: list[LeagueInfo]
     """List of old economy leagues' metadata"""
-    snapshotVersions: list[SnapshotInfo]
+    snapshot_versions: list[SnapshotInfo]
     """Snapshots"""
-    buildLeagues: list[LeagueInfo]
+    build_leagues: list[LeagueInfo]
     """List of leagues with available build statistics"""
-    oldBuildLeagues: list[LeagueInfo]
+    old_build_leagues: list[LeagueInfo]
     """List of old leagues with available build statistics"""
+
+
+def extract_league_info(json_obj: dict[str, Any]) -> LeagueInfo:
+    return LeagueInfo(
+        name=json_obj["name"],
+        url=json_obj["url"],
+        display_name=json_obj["displayName"],
+        hardcore=json_obj["hardcore"],
+        indexed=json_obj["indexed"],
+    )
+
+
+def extract_snapshot_version(json_obj: dict[str, Any]) -> SnapshotInfo:
+    return SnapshotInfo(
+        url=json_obj["url"],
+        snapshot_type=json_obj["type"],
+        name=json_obj["name"],
+        time_machine_labels=json_obj["timeMachineLabels"],
+        version=json_obj["version"],
+        snapshot_name=json_obj["snapshotName"],
+        overview_type=json_obj["overviewType"],
+        search_mode=json_obj["searchMode"],
+        has_server=json_obj["hasServer"],
+    )
 
 
 def fetch_general_metadata() -> LeaguesMetadata:
@@ -74,7 +104,25 @@ def fetch_general_metadata() -> LeaguesMetadata:
     Returns:
         LeaguesMetadata: Dataclass instance with leagues and snapshots info.
     """
-    return from_dict(data_class=LeaguesMetadata, data=get_json(api_index_url()))
+    request_data = get_json(api_index_url())
+    economy_leagues = [extract_league_info(json_obj) for json_obj in request_data["economyLeagues"]]
+    old_economy_leagues = [
+        extract_league_info(json_obj) for json_obj in request_data["oldEconomyLeagues"]
+    ]
+    snapshot_versions = [
+        extract_snapshot_version(json_obj) for json_obj in request_data["snapshotVersions"]
+    ]
+    build_leagues = [extract_league_info(json_obj) for json_obj in request_data["buildLeagues"]]
+    old_build_leagues = [
+        extract_league_info(json_obj) for json_obj in request_data["oldBuildLeagues"]
+    ]
+    return LeaguesMetadata(
+        economy_leagues,
+        old_economy_leagues,
+        snapshot_versions,
+        build_leagues,
+        old_build_leagues,
+    )
 
 
 def fetch_league_info(league_name: str) -> LeagueInfo | None:
@@ -87,9 +135,7 @@ def fetch_league_info(league_name: str) -> LeagueInfo | None:
     Returns:
         LeagueInfo | None: League metadata, or None if league is not found
     """
-    leagues = (
-        fetch_general_metadata().economyLeagues + fetch_general_metadata().buildLeagues
-    )
+    leagues = fetch_general_metadata().economy_leagues + fetch_general_metadata().build_leagues
     for league in leagues:
         if league.name == league_name:
             return league

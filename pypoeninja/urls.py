@@ -20,7 +20,7 @@ ENDPOINT_NAMES = {
 class CategoryMetadata:
     """Structure containing category metadata."""
 
-    id: str
+    category_id: str
     """Category ID in PoE.Ninja API."""
     endpoint_name: str
     """Endpoint name."""
@@ -77,10 +77,8 @@ DEFAULT_LANGUAGE = "English"
 """Default language used for fetching."""
 
 
-class UrlException(Exception):
+class UrlError(Exception):
     """Stub class for URL-related exception"""
-
-    pass
 
 
 def api_index_url() -> str:
@@ -89,7 +87,9 @@ def api_index_url() -> str:
 
 
 def api_category_url(
-    league_name: str, category: str, language: str = DEFAULT_LANGUAGE
+    league_name: str,
+    category: str,
+    language: str = DEFAULT_LANGUAGE,
 ) -> str:
     """Returns a full URL to a specific category in PoE.Ninja API.
 
@@ -100,12 +100,17 @@ def api_category_url(
                                   Valid languages are stored in :const:`LANGUAGES` map.
     """
     if category not in CATEGORIES:
-        raise UrlException(f"Category '{category}' is not available!")
+        error_msg = f"Category '{category} is not available!"
+        raise UrlError(error_msg)
 
     if language not in LANGUAGES:
-        raise UrlException(f"Language '{language}' is not available!")
+        error_msg = f"Language '{language}' is not available!"
+        raise UrlError(error_msg)
 
     category_metadata = CATEGORIES[category]
     language_id = LANGUAGES[language]
     endpoint = API_URL + ENDPOINT_NAMES[category_metadata.endpoint_name]
-    return f"{endpoint}?league={league_name}&type={category_metadata.id}&language={language_id}"
+    return (
+            f"{endpoint}?league={league_name}&type={category_metadata.category_id}" # noqa: ISC003
+        + f"&language={language_id}"
+    )
