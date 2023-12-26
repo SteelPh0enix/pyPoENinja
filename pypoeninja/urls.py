@@ -1,4 +1,4 @@
-"""This module contains URLs to PoE.Ninja API and helper functions for constructing them."""
+"""URLs to PoE.Ninja API and helper functions for constructing them."""
 
 from dataclasses import dataclass
 

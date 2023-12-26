@@ -1,4 +1,4 @@
-"""This module contains constants for challenge, standard and hardcore leagues metadata."""
+"""Constants for challenge, standard and hardcore leagues metadata."""
 
 CHALLENGE_LEAGUE_NAME = "Affliction"
 """Current challenge league name"""

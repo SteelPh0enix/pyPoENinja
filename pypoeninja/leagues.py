@@ -1,5 +1,4 @@
-"""This module contains functions for fetching general information about current/past leagues
-metadata."""
+"""Functions for fetching general information about current/past leagues metadata."""
 
 from __future__ import annotations
 

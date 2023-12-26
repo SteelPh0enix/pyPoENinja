@@ -1,4 +1,4 @@
-"""Request utilities for unit tests"""
+"""Unit tests of request utilities"""
 import pytest
 
 import pypoeninja.request_utils as request
